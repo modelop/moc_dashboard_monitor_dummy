@@ -32,7 +32,7 @@ def getIncidentsTimeLineYTD():
     for iteratedDate in datesYTD:
         if random.randint(1, 10) % 2 == 0:
             incidentsTimeLineYTD.append(
-                {"createdDate": iteratedDate, "incidentType": getRandomIncidentType(),
+                {"createdDate": iteratedDate.strftime('%m/%d/%Y'), "incidentType": getRandomIncidentType(),
                  "severity": getRandomSeverityType(),
                  "isOpen": getRandomIsOpenType()})
 
@@ -67,8 +67,9 @@ def metrics(df_1):
     actualROIAllTime = random.randint(30, 100)
     numberOfOpenPriorityIssues = random.randint(5, 20)
     incidentsTimelineYTD = getIncidentsTimeLineYTD()
-
-    result = {
+    dailyInferencesLast30Days = getInferences()
+    notificationsByGroup = getNotificationsByGroup(incidentsTimelineYTD)
+    yield {
         "createdDate": datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
         "actualROIAllTime": actualROIAllTime,
         "actualROIThisYear": actualROIAllTime + 3,
@@ -76,21 +77,19 @@ def metrics(df_1):
         "numberOfOpenPriorityIssues": numberOfOpenPriorityIssues,
         "numberOfOpenPriorityIssuesMTD": numberOfOpenPriorityIssues - 1,
         "heatMap": {
-            "inputVolume": {"testResult": "GREEN", "passed": True},
-            "outputIntegrity": {"testResult": "GREEN", "passed": True},
-            "dataDrift": {"testResult": "YELLOW", "passed": True},
-            "conceptDrift": {"testResult": "GREEN", "passed": True},
-            "statisticalPerformance": {"testResult": "GREEN", "passed": True},
-            "stabilitity": {"testResult": "GREEN", "passed": True},
-            "ethicalFairness": {"testResult": "GREEN", "passed": True}
+            "inputVolume": {"testResult": "GREEN", "passed": "true"},
+            "outputIntegrity": {"testResult": "GREEN", "passed": "true"},
+            "dataDrift": {"testResult": "YELLOW", "passed": "true"},
+            "conceptDrift": {"testResult": "GREEN", "passed": "true"},
+            "statisticalPerformance": {"testResult": "GREEN", "passed": "true"},
+            "stability": {"testResult": "GREEN", "passed": "true"},
+            "ethicalFairness": {"testResult": "GREEN", "passed": "true"}
         },
-        "dailyInferencesLast30Days": getInferences(),
+        "dailyInferencesLast30Days": dailyInferencesLast30Days,
         "notificationsTimelineYTD": incidentsTimelineYTD,
-        "notificationsGroupedByTypeYTD": getNotificationsByGroup(incidentsTimelineYTD)
+        "notificationsGroupedByTypeYTD": notificationsByGroup
     }
-    yield result
 
-
-if __name__ == "__main__":
-    output = metrics(1)
-    print(next(output))
+# if __name__ == "__main__":
+#     output = metrics(1)
+#     print(next(output))
