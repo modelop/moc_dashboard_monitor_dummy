@@ -1,9 +1,9 @@
 [
     {
         "usage": "INPUT_ASSET",
-        "assetRole": "COMPARATOR_DATA",
+        "name": ".*\\.json",
         "metaData": {
-            "description": "Slice of Production Data"
+            "description": "JSON containing: storedModelID ( required ), (optional) startDate:\"mm/dd/yyyy\" , (optional) endDate:\"mm/dd/yyyy\" "
         }
     }
 ]

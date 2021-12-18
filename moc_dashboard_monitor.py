@@ -7,7 +7,11 @@ logger = utils.configure_logger()
 notificationTypes = ["MODEL_NOTIFICATION", "MODEL_TEST_NOTIFICATION", "ENGINE_NOTIFICATION", "PROCESS_NOTIFICATION"
     , "MODEL_REVIEW_NOTIFICATION", "MODEL_DOCUMENT_REVIEW_NOTIFICATION", "JOB_NOTIFICATION"]
 severitiesTypes = ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
-isOpenType = [True, False]
+isOpenType = ["true", "false"]
+
+## Defining Green multiple times to force a best looking Dashboard
+heatMapColors = ["Gray", "Green", "Green", "Green", "Green", "Green", "Green", "Green", "Yellow", "Green", "Green",
+                 "Green", "Green", "Green", "Green", "Red"]
 
 
 # modelop.init
@@ -62,6 +66,14 @@ def getNotificationsByGroup(notificationsArray):
     return notificationsByGroupDict
 
 
+def generateHeatMapValues():
+    color = heatMapColors[random.randint(0, len(heatMapColors) - 1)]
+    booleanPassResult = "true"
+    if color == "RED":
+        booleanPassResult = "false"
+    return {"testResult": color, "passed": booleanPassResult}
+
+
 # modelop.metrics
 def metrics(df_1):
     actualROIAllTime = random.randint(30, 100)
@@ -77,19 +89,27 @@ def metrics(df_1):
         "numberOfOpenPriorityIssues": numberOfOpenPriorityIssues,
         "numberOfOpenPriorityIssuesMTD": numberOfOpenPriorityIssues - 1,
         "heatMap": {
-            "inputVolume": {"testResult": "GREEN", "passed": "true"},
-            "outputIntegrity": {"testResult": "GREEN", "passed": "true"},
-            "dataDrift": {"testResult": "YELLOW", "passed": "true"},
-            "conceptDrift": {"testResult": "GREEN", "passed": "true"},
-            "statisticalPerformance": {"testResult": "GREEN", "passed": "true"},
-            "stability": {"testResult": "GREEN", "passed": "true"},
-            "ethicalFairness": {"testResult": "GREEN", "passed": "true"}
+            "Input Volume": generateHeatMapValues(),
+            "Output Integrity": generateHeatMapValues(),
+            "Data Drift": generateHeatMapValues(),
+            "Concept Drift": generateHeatMapValues(),
+            "Statistical Performance": generateHeatMapValues(),
+            "Stability": generateHeatMapValues(),
+            "Ethical Fairness": generateHeatMapValues(),
+            "Data Inputs (Pipelines)": generateHeatMapValues(),
+            "DeepBrew": generateHeatMapValues(),
+            "Ecosystem Health": generateHeatMapValues(),
+            "Response SLA": generateHeatMapValues(),
+            "Business KPI SLA": generateHeatMapValues(),
+            "Economic Projection": generateHeatMapValues()
         },
         "dailyInferencesLast30Days": dailyInferencesLast30Days,
         "notificationsTimelineYTD": incidentsTimelineYTD,
         "notificationsGroupedByTypeYTD": notificationsByGroup
     }
 
+
 # if __name__ == "__main__":
 #     output = metrics(1)
+#     print('Result')
 #     print(next(output))
