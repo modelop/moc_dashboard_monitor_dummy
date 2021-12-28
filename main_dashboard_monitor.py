@@ -22,41 +22,47 @@ def init(self, input_job_json):
 
 # modelop.metrics
 def metrics(self, dataframe_1, dataframe_2, df_baseline, df_sample) -> dict:
-    
     try:
-        daily_inferences = execute_volumetrics_count_monitor(dataframe_1)
+        daily_inferences = execute_volumetrics_count(dataframe_1)
+        print(" daily_inferences =%s", daily_inferences)
     except Exception:
         print("An exception happened while executing the daily_inferences monitor")
-
     """Heat map monitors"""
     try:
         input_volume = execute_volumetrics_count_comparison(dataframe_1, dataframe_2)
+        print(" input_volume =%s", input_volume)
     except Exception:
         print("An exception happened while executing the input_volume monitor")
     try:
-        output_integrity = execute_volumetrics_identifier_comparison(self.job_json)
+        #This one  depending on the input schema, might require scored DF
+        output_integrity = execute_volumetrics_identifier_comparison(self.job_json,dataframe_1,dataframe_2)
+        print(" output_integrity =%s", input_volume)
     except Exception:
         print("An exception happened while executing the output_integrity monitor")
     try:
         data_drift = execute_data_drift_comprehensive(self.job_json, df_baseline, df_sample)
+        print(" data_drift =%s", input_volume)
     except Exception:
         print("An exception happened while executing the data_drift monitor")
     # concept_drfit = Pending to be defined
     try:
-        statistical_performance = execute_performance_classification(self.job_json, dataframe_1)
+        #Maybe due to the input schema, the DF requires scored
+        statistical_performance = execute_performance_classification(self.job_json, df_sample)
+        print(" statistical_performance =%s", input_volume)
     except Exception:
         print("An exception happened while executing the statistical_performance monitor")
 
     try:
         stability_analysis = execute_stability_analysis(self.job_json, df_baseline, df_sample)
+        print(" stability_analysis =%s", input_volume)
     except Exception:
         print("An exception happened while executing the stability_analysis monitor")
 
     try:
         ethical_fairness = execute_bias_comprehensive(self.job_json, dataframe_1)
+        print(" ethical_fairness =%s", input_volume)
     except Exception:
         print("An exception happened while executing the ethical_fairness monitor")
-
 
 
 """
@@ -64,7 +70,7 @@ def metrics(self, dataframe_1, dataframe_2, df_baseline, df_sample) -> dict:
 """
 
 
-def execute_volumetrics_count_monitor(df_1) -> dict:
+def execute_volumetrics_count(df_1) -> dict:
     """
     Daily inferences
     """
@@ -455,3 +461,4 @@ def execute_bias_comprehensive(job_json, dataframe) -> dict:
         result["bias"].append(group_metrics)
 
     return result
+
