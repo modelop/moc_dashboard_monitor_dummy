@@ -86,33 +86,33 @@ def metrics(df_1):
         "numberOfOpenPriorityIssues": numberOfOpenPriorityIssues,
         "numberOfOpenPriorityIssuesMTD": numberOfOpenPriorityIssues - 1,
         "heatMap": {
-            "Input Volume": generateHeatMapValues(
-                "This ModelOp Center monitor detects discrepancies between two assets based on their record counts & identifiers."),
-            "Output Integrity": generateHeatMapValues(
-                "This ModelOp Center monitor detects discrepancies between two assets based on their record identifiers."),
-            "Data Drift": generateHeatMapValues(
-                "This ModelOp Center monitor runs and compares Kolmogorov-Smirnov, Epps-Singleton, Jensen-Shannon, Kullback-Leibler, and Pandas summary on input data."),
-            "Concept Drift": generateHeatMapValues(
-                "This ModelOp Center monitor runs and compares Kolmogorov-Smirnov, Epps-Singleton, Jensen-Shannon, Kullback-Leibler, and Pandas summary on output data."),
-            "Statistical Performance": generateHeatMapValues(
-                "This ModelOp Center monitor computes classification metrics such as AUC, Accuracy, Precision, Recall, and F1_score."),
-            "Stability": generateHeatMapValues(
-                "This ModelOp Center monitor computes stability metrics, including Population Stability Index (PSI) and Characteristic Stability Indices (CSI), and their breakdown by buckets."),
-            "Ethical Fairness": generateHeatMapValues(
-                "This ModelOp Center monitor computes disparity metrics (with respect to reference groups) and group metrics on protected classes, such as race or gender."),
-            "Data Inputs Health": generateHeatMapValues(""),
-            "DeepBrew Health": generateHeatMapValues(""),
-            "Ecosystem Health": generateHeatMapValues(""),
+            # "Input Volume": generateHeatMapValues(
+            #     "This ModelOp Center monitor detects discrepancies between two assets based on their record counts & identifiers."),
+            # "Output Integrity": generateHeatMapValues(
+            #     "This ModelOp Center monitor detects discrepancies between two assets based on their record identifiers."),
+            # "Data Drift": generateHeatMapValues(
+            #     "This ModelOp Center monitor runs and compares Kolmogorov-Smirnov, Epps-Singleton, Jensen-Shannon, Kullback-Leibler, and Pandas summary on input data."),
+            # "Concept Drift": generateHeatMapValues(
+            #     "This ModelOp Center monitor runs and compares Kolmogorov-Smirnov, Epps-Singleton, Jensen-Shannon, Kullback-Leibler, and Pandas summary on output data."),
+            # "Statistical Performance": generateHeatMapValues(
+            #     "This ModelOp Center monitor computes classification metrics such as AUC, Accuracy, Precision, Recall, and F1_score."),
+            # "Stability": generateHeatMapValues(
+            #     "This ModelOp Center monitor computes stability metrics, including Population Stability Index (PSI) and Characteristic Stability Indices (CSI), and their breakdown by buckets."),
+            # "Ethical Fairness": generateHeatMapValues(
+            #     "This ModelOp Center monitor computes disparity metrics (with respect to reference groups) and group metrics on protected classes, such as race or gender."),
+            "Data Inputs Health": generateHeatMapValues("All pipelines that provide data input to the Usuals"),
+            "DeepBrew Health": generateHeatMapValues("DeepBrew model"),
+            "Ecosystem Health": generateHeatMapValues("Ecosystem health"),
             "Response SLA": generateHeatMapValues(""),
-            "Business KPI SLA": generateHeatMapValues(""),
-            "Economic Projection": generateHeatMapValues("")
+            "Business KPI SLA": generateHeatMapValues("Engagement, conversion and revenue KPIs"),
+            "Economic Projection": generateHeatMapValues("Projected annual NIR")
         },
         "dailyInferencesLast30Days": dailyInferencesLast30Days,
         "notificationsTimelineYTD": incidentsTimelineYTD,
         "notificationsGroupedByTypeYTD": notificationsByGroup
     }
 
-# if __name__ == "__main__":
-#     output = metrics(1)
-#     print('Result')
-#     print(next(output))
+if __name__ == "__main__":
+    output = metrics(1)
+    print('Result')
+    print(next(output))
