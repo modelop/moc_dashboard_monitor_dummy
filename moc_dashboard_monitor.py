@@ -112,7 +112,7 @@ def metrics(df_1):
         "notificationsGroupedByTypeYTD": notificationsByGroup
     }
 
-if __name__ == "__main__":
-    output = metrics(1)
-    print('Result')
-    print(next(output))
+# if __name__ == "__main__":
+#     output = metrics(1)
+#     print('Result')
+#     print(next(output))
