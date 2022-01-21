@@ -1,8 +1,8 @@
-import modelop.utils as utils
+#import modelop.utils as utils
 from datetime import timedelta, datetime
 import random
 
-logger = utils.configure_logger()
+#logger = utils.configure_logger()
 
 notificationTypes = ["MODEL_NOTIFICATION", "MODEL_TEST_NOTIFICATION", "ENGINE_NOTIFICATION", "PROCESS_NOTIFICATION"
     , "MODEL_REVIEW_NOTIFICATION", "MODEL_DOCUMENT_REVIEW_NOTIFICATION", "JOB_NOTIFICATION"]
@@ -10,9 +10,10 @@ severitiesTypes = ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
 isOpenType = ["true", "false"]
 
 ## Defining Green multiple times to force a best looking Dashboard
-heatMapColors = ["Gray", "Green", "Green", "Green", "Green", "Green", "Green", "Green", "Yellow", "Green", "Green",
-                 "Green", "Green", "Green", "Green", "Red"]
+#heatMapColors = ["Gray", "Green", "Green", "Green", "Green", "Green", "Green", "Green", "Yellow", "Green", "Green",
+#                 "Green", "Green", "Green", "Green", "Red"]
 
+heatMapColors = ["Gray"]
 
 # modelop.init
 def init():
