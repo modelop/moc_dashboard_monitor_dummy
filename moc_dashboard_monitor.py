@@ -101,13 +101,14 @@ def metrics(df_1):
             #     "This ModelOp Center monitor computes stability metrics, including Population Stability Index (PSI) and Characteristic Stability Indices (CSI), and their breakdown by buckets."),
             # "Ethical Fairness": generateHeatMapValues(
             #     "This ModelOp Center monitor computes disparity metrics (with respect to reference groups) and group metrics on protected classes, such as race or gender."),
-            "Data Inputs Health": generateHeatMapValues("All pipelines that provide data input to the Usuals"),
-            "DeepBrew Health": generateHeatMapValues("DeepBrew model"),
-            "Ecosystem Health": generateHeatMapValues("Ecosystem health"),
-            "Response SLA": generateHeatMapValues(""),
-            "Business KPI SLA": generateHeatMapValues("Engagement, conversion and revenue KPIs"),
-            "Economic Projection": generateHeatMapValues("Projected annual NIR")
-        },
+            "Summary": generateHeatMapValues("All Vitals green"),
+            "Customer Synthetic": generateHeatMapValues("Customer Synthetics Working as expected"),
+            "Ecosystem Health": generateHeatMapValues("Ecosystem model"),
+            "DeepBrew Health": generateHeatMapValues("Deepbrew health"),
+            "Model Record": generateHeatMapValues("All info from MLFlow populated"),
+            "Infra Security": generateHeatMapValues("Infra Security Approval"),
+            "Data Use": generateHeatMapValues("Data use Approval")
+            },
         "dailyInferencesLast30Days": dailyInferencesLast30Days,
         "notificationsTimelineYTD": incidentsTimelineYTD,
         "notificationsGroupedByTypeYTD": notificationsByGroup
