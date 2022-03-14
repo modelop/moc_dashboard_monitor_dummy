@@ -107,7 +107,8 @@ def metrics(df_1):
             "DeepBrew Health": generateHeatMapValues("Deepbrew health"),
             "Model Record": generateHeatMapValues("All info from MLFlow populated"),
             "Infra Security": generateHeatMapValues("Infra Security Approval"),
-            "Data Use": generateHeatMapValues("Data use Approval")
+            "Data Use": generateHeatMapValues("Data use Approval"),
+            "Data Pipeline": generateHeatMapValues("Data Pipeline Health")
             },
         "dailyInferencesLast30Days": dailyInferencesLast30Days,
         "notificationsTimelineYTD": incidentsTimelineYTD,
